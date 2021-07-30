@@ -14,8 +14,10 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-toastify": "^7.0.4",
     "web-vitals": "^1.1.2"
   },
+  "proxy": "http://localhost:1111",
   "scripts": {
     "start": "craco start",
     "build": "craco build",

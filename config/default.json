@@ -1,4 +1,7 @@
 {
   "port": 1111,
-  "dbUrl": "mongodb+srv://aaliboyev:mongodbPassword98@cluster0.yfnss.mongodb.net/researchers?retryWrites=true&w=majority"
+  "dbUrl": "mongodb+srv://aaliboyev:mongodbPassword98@cluster0.yfnss.mongodb.net/researchers?retryWrites=true&w=majority",
+  "jwtSecret": "sciencewebResearchersProfileCollector",
+  "sciencewebToken": "6|NHERYt7daz3rtomYmmtERnVeXPi3jYtBIe19Kvog",
+  "scholarApiToekn": ""
 }

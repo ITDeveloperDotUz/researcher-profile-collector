@@ -26,22 +26,28 @@ const options = {
 		},
 	},
 };
-
-const VerticalBar = ({bgColor}) => {
+let myIterable = {}
+myIterable[Symbol.iterator] = function* () {
+	for (let num = 0; num < 20; num++){
+		yield Math.floor(Math.random() * 10000)
+	}
+};
+const VerticalBar = ({bgColor, label}) => {
 	const data = {
-		labels: ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
+		labels: ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021","2021","2021","2021","2021","2021","2021","2021","2021","2021"],
 		datasets: [
 			{
 				label: "Number of Moons",
 				type: 'bar',
-				data: [340, 650, 450, 480, 560, 770, 555, 235],
+				data: [...myIterable],
 				backgroundColor: bgColor,
 			},
 		]
 	}
 	return (
 		<>
-			<Bar width={200} height={80} data={data} options={options} />
+			<Bar width={250} height={80} data={data} options={options} />
+			<h3 className="font-bold">{label}</h3>
 		</>
 	)
 }

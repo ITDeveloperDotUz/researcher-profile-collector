@@ -1,8 +1,9 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {HomePage} from './pages/HomePage'
-import {ResearcherPage} from "./pages/ResearcherPage";
-
+import {RegisterPage} from './pages/RegisterPage'
+import {ResearcherPage} from "./pages/ResearcherPage"
+import {LoginPage} from "./pages/LoginPage"
 
 export const useRoutes = isAuthenticated => {
 	// if (isAuthenticated) {
@@ -29,6 +30,12 @@ export const useRoutes = isAuthenticated => {
 			</Route>
 			<Route path="/researcher">
 				<ResearcherPage />
+			</Route>
+			<Route path="/register">
+				<RegisterPage />
+			</Route>
+			<Route path="/login">
+				<LoginPage />
 			</Route>
 			<Redirect to="/" />
 		</Switch>
