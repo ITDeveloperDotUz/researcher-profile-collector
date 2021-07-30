@@ -19,6 +19,10 @@ export const LoginPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', form)
+            if (!data.token) {
+                throw new Error(data.message || 'Something went wrong. Please try again later.')
+            }
+
             toast.success(data.message)
         } catch (e) {}
     }
