@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {useHttp} from "../hooks/http.hook";
 import {toast} from "react-toastify";
+import {AuthContext} from "../context/AuthContext";
 
 export const LoginPage = () => {
     const {loading, error, clearError, request} = useHttp()
     const [form, setForm] = useState({email: '', password: ''})
+    const auth = useContext(AuthContext)
 
     useEffect(() => {
         toast.error(error)
@@ -22,8 +24,9 @@ export const LoginPage = () => {
             if (!data.token) {
                 throw new Error(data.message || 'Something went wrong. Please try again later.')
             }
-
+            auth.login(data.token, data.userId)
             toast.success(data.message)
+
         } catch (e) {}
     }
 
