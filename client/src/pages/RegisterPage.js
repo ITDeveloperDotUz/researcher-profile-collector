@@ -18,7 +18,7 @@ export const RegisterPage = () => {
 
     const registerHandler = async () => {
         try {
-            const data = await request('/api/auth/register', 'POST', form)
+            const data = await request('/api/register', 'POST', form)
             toast.success(data.message)
         } catch (e) {}
     }

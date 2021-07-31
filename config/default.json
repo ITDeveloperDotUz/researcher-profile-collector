@@ -2,6 +2,7 @@
   "port": 1111,
   "dbUrl": "mongodb+srv://aaliboyev:mongodbPassword98@cluster0.yfnss.mongodb.net/researchers?retryWrites=true&w=majority",
   "jwtSecret": "sciencewebResearchersProfileCollector",
+  "swUrl": "https://scienceweb.uz/api",
   "sciencewebToken": "6|NHERYt7daz3rtomYmmtERnVeXPi3jYtBIe19Kvog",
   "scholarApiToekn": ""
 }

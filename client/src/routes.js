@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {HomePage} from './pages/HomePage'
 import {RegisterPage} from './pages/RegisterPage'
-import {ResearcherPage} from "./pages/ResearcherPage"
+import {SearchPage} from "./pages/SearchPage"
 import {LoginPage} from "./pages/LoginPage"
 import {AddProfilePage} from "./pages/AddProfilePage";
 
@@ -16,8 +16,8 @@ export const useRoutes = isLoggedIn => {
 				<Route path="/add-profile">
 					<AddProfilePage />
 				</Route>
-				<Route path="/researcher">
-					<ResearcherPage />
+				<Route path="/search/:searchPhrase?">
+					<SearchPage />
 				</Route>
 				<Redirect to="/" />
 			</Switch>
@@ -34,6 +34,9 @@ export const useRoutes = isLoggedIn => {
 			</Route>
 			<Route path="/login">
 				<LoginPage />
+			</Route>
+			<Route path="/search/:searchPhrase?">
+				<SearchPage />
 			</Route>
 			<Redirect to="/" />
 		</Switch>

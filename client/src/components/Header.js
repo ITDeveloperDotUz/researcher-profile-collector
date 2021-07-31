@@ -19,12 +19,6 @@ export const Header = () => {
 				const navLinks = context.isLoggedIn ? (
 					<ul className="items-center inline-block list-none inline-flex flex-nowrap dark:text-white">
 						<li>
-							<NavLink to="/researcher"
-									 className="px-4 py-1 mx-2 text-base animated transform rounded-md focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-200 dark:hover:bg-gray-700">
-								Researcher
-							</NavLink>
-						</li>
-						<li>
 							<NavLink to="/add-profile"
 									 className="px-4 py-1 mx-2 text-base animated transform rounded-md focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-200 dark:hover:bg-gray-700">
 								Add Researcher's profile

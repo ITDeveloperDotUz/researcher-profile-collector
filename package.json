@@ -18,6 +18,7 @@
   "author": "Abror Aliboyev <aaliboyev@bk.ru>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "chart.js": "^2.9.4",
     "config": "^3.3.6",
