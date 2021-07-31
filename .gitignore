@@ -2,4 +2,4 @@
 # production
 /build
 /.idea
-
+./config/default.json

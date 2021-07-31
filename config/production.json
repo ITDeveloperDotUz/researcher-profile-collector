@@ -1,0 +1,7 @@
+{
+  "port": 1111,
+  "dbUrl": "your mongodb connection link",
+  "jwtSecret": "your secret key for jwt token",
+  "swUrl": "https://scienceweb.uz/api",
+  "sciencewebToken": "Scienceweb api token",
+}

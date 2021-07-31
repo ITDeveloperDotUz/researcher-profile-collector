@@ -1,24 +1,79 @@
 const axios = require("axios");
 const config = require('config')
-
+const Researcher = require('../models/Researcher')
 const swUrl = config.get('swUrl')
+
+
 module.exports = {
 	search: async (req, res) => {
 		try {
-			const response = await axios.get(swUrl + '/search/' + req.params.searchParams, {
-				headers: {
-					accept: 'application/json',
-					authorization: 'Bearer ' + config.get('sciencewebToken')
+			const eagerSearch = false
+			let data
+			if (eagerSearch){
+				const response = await axios.get(swUrl + '/search/' + req.params.searchParams, {
+					headers: {
+						accept: 'application/json',
+						authorization: 'Bearer ' + config.get('sciencewebToken')
+					}
+				})
+				const responseData = response.data.filter(researcher => !!researcher.profile.filled)
+
+				// we need to normalize th data received from scienceweb
+				data = responseData.map((researcher) => {
+					const formattedData = formatData(researcher)
+					try {
+						Researcher.updateOne({id: formattedData.id}, formattedData, { upsert: true })
+					} catch (e){
+						console.log(e.message)
+					}
+					return formattedData
+				})
+			} else {
+				const searchParams = req.params.searchParams.split(':')
+				switch(searchParams[0] ) {
+					case 'name':
+						data = await Researcher.find({
+							"$expr": {
+								$or: [
+									{
+										"$regexMatch": {
+											"input": {
+												"$concat": [
+													"$first_name", " ", "$last_name"
+												]
+											},
+											"regex": "ibro",
+											"options": "i"
+										}
+									},
+									{
+										"$regexMatch": {
+											"input": {
+												"$concat": [
+													"$last_name", " ", "$first_name"
+												]
+											},
+											"regex": "ibro",
+											"options": "i"
+										}
+									}
+								]
+							}
+						})
+						break
+					case 'email':
+						data = await Researcher.find({email:searchParams[1] })
+						break
+					case 'orcid':
+						data = await Researcher.find({orcid:searchParams[1]})
+						break
+					default:
+						data = []
 				}
-			})
-			const data = response.data.filter(researcher => !!researcher.profile.filled)
+			}
+			// if data is not empty return it to user
 			if(data.length > 0){
-
-				const formattedData = data.map(researcher => formatData(researcher))
-
-				res.json({message: `Found ${data.length} result(s)!`, data: formattedData})
-
-
+				res.json({message: `Found ${data.length} result(s)!`, data})
 			} else res.status(201).json({message: 'Nothing found with this search term!'})
 
 		} catch (e) {
@@ -38,18 +93,17 @@ function formatData(researcher){
 		last_name: researcher.last_name,
 		id: researcher.id,
 		avatar: `https://scienceweb.uz/${researcher.profile.avatar || 'images/icons/no_gender.png'}`,
-		bio: researcher.bio,
-		keywords: researcher.keywords,
+		bio: researcher.profile.bio,
+		keywords: researcher.profile.keywords,
 		orcid: researcher.orcid,
-		public_name: researcher.public_name,
+		public_name: researcher.profile.public_name,
 		organization: (researcher.profile.work_job && researcher.profile.work_org) ? `${researcher.profile.work_job} at ${researcher.profile.work_org}` : (researcher.profile.work_org || researcher.profile.work_job),
-		social_links: researcher.social_links,
+		social_links: JSON.parse(researcher.profile.social_links),
 		googleScholarProfile: researcher.scholar_profile ? makeGSProfile(researcher.scholar_profile) : null,
 		publonsProfile: researcher.publons_profile ? makePublonsProfile(researcher.publons_profile) : null,
 		scopuesProfile: researcher.scopus_profile ? makeScopusProfile(researcher.scopus_profile) : null
 	}
 }
-
 
 // Reformat Google Scholar Profile Data
 function makeGSProfile(data){
