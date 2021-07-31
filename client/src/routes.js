@@ -4,7 +4,6 @@ import {HomePage} from './pages/HomePage'
 import {RegisterPage} from './pages/RegisterPage'
 import {SearchPage} from "./pages/SearchPage"
 import {LoginPage} from "./pages/LoginPage"
-import {AddProfilePage} from "./pages/AddProfilePage";
 
 export const useRoutes = isLoggedIn => {
 	if (isLoggedIn) {
@@ -12,9 +11,6 @@ export const useRoutes = isLoggedIn => {
 			<Switch>
 				<Route path="/" exact>
 					<HomePage />
-				</Route>
-				<Route path="/add-profile">
-					<AddProfilePage />
 				</Route>
 				<Route path="/search/:searchPhrase?">
 					<SearchPage />
