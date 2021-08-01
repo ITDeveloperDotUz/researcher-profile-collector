@@ -7,7 +7,7 @@ export const Footer = () => {
 			<div className="container px-6 py-8 mx-auto">
 				<hr className="my-10 dark:border-gray-500" />
 				<div className="sm:flex sm:items-center sm:justify-between">
-					<p className="text-sm text-gray-400">© Copyright 2021. All Rights Reserved.</p>
+					<p className="text-sm text-gray-400">© Copyright 2021. Created by Abror Aliboyev</p>
 					<div className="flex mt-3 -mx-2 sm:mt-0">
 						<a href="https://www.facebook.com/aaliboyev" target="_blank" rel="noreferrer" className="mx-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Facebook">
 							<FaFacebook/>

@@ -30,8 +30,10 @@ module.exports = {
 				})
 			} else {
 				const searchParams = req.params.searchParams.split(':')
+
 				switch(searchParams[0] ) {
 					case 'name':
+
 						data = await Researcher.find({
 							"$expr": {
 								$or: [
@@ -42,7 +44,7 @@ module.exports = {
 													"$first_name", " ", "$last_name"
 												]
 											},
-											"regex": "ibro",
+											"regex": searchParams[1],
 											"options": "i"
 										}
 									},
@@ -53,7 +55,7 @@ module.exports = {
 													"$last_name", " ", "$first_name"
 												]
 											},
-											"regex": "ibro",
+											"regex": searchParams[1],
 											"options": "i"
 										}
 									}

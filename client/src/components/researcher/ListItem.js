@@ -1,8 +1,8 @@
 import React from "react";
-import VerticalBar from "./VerticalBar";
+import VerticalBar from "../VerticalBar";
 
 
-export const ResearcherListItem = ({researcher, avatar}) => {
+export const ListItem = ({researcher, avatar}) => {
 
 	return (
 		<div className="flex my-4">
