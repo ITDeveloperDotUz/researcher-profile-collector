@@ -1,39 +1,21 @@
-import React, {useCallback, useEffect, useState} from 'react'
-import {isEmail, isOrcid} from "../utils/helpers";
-import {useHttp} from "../hooks/http.hook";
+import React, {useEffect} from 'react'
 import {useParams} from "react-router-dom";
-import {toast} from "react-toastify";
 import {Search} from "../components/Search";
 import {SearchResultListItem} from "../components/researcher/SearchResultListItem";
+import {useSearch} from "../hooks/search.hook";
 
 export const SearchPage = () => {
 	const {searchPhrase} = useParams()
-	const [searchResult, setSearchResult] = useState([])
-	const {request} = useHttp()
-	const search = searchPhrase ? searchPhrase.split(':') : ''
-	let searchForm = {phrase: search[0], eager:search[1] !== "false"}
-
-	const searchHandler = useCallback( async (searchForm) => {
-		setSearchResult([])
-		try {
-			// set param = email if isEmail returns true or orcid if isOrcid returns true or 'name'
-			const param = !isEmail(searchForm.phrase) ? (isOrcid(searchForm.phrase) ? 'orcid' : 'name') : 'email'
-
-			const response = await request(`/api/researcher/search/${param}:${searchForm.phrase}:${searchForm.eager}`)
-			if (response.data) {
-				setSearchResult(response.data)
-			} else setSearchResult([])
-
-			toast.info(response.message)
-		} catch (e) {}
-	}, [request,setSearchResult])
+	const {searchHandler,searchResult,setSearchForm, searchForm} = useSearch()
 
 	useEffect(() => {
-		if (searchForm.phrase){
-			searchHandler((searchForm))
+		const search = searchPhrase ? searchPhrase.split(':') : ''
+		const searchObject = {phrase: search[0], eager: search[1] === "true"}
+		if(search){
+			setSearchForm(searchObject)
+			searchHandler(searchObject)
 		}
-	}, []);
-
+	}, [searchHandler, searchPhrase, setSearchForm]);
 
 	return (
 		<div className="text-center pt-6">

@@ -1,9 +1,29 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
+import {isEmail, isOrcid} from "../utils/helpers";
+import {toast} from "react-toastify";
+import {useHttp} from "./http.hook";
 
 export const useSearch = () => {
+	const {request} = useHttp()
 	const [searchForm, setSearchForm] = useState({
 		phrase: '', eager: false
 	});
+	const [searchResult, setSearchResult] = useState([])
 
-	return {searchForm, setSearchForm}
+	const searchHandler = useCallback(async (searchForm) => {
+		setSearchResult([])
+		try {
+			// set param = email if isEmail returns true or orcid if isOrcid returns true or 'name'
+			const param = !isEmail(searchForm.phrase) ? (isOrcid(searchForm.phrase) ? 'orcid' : 'name') : 'email'
+
+			const response = await request(`/api/researcher/search/${param}:${searchForm.phrase}:${searchForm.eager}`)
+			if (response.data) {
+				setSearchResult(response.data)
+			} else setSearchResult([])
+
+			toast.info(response.message)
+		} catch (e) {}
+	}, [request,setSearchResult])
+
+	return {searchForm, setSearchForm, searchHandler, searchResult}
 }

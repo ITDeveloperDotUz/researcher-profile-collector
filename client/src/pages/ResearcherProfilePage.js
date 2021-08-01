@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {MainProfile} from "../components/researcher/MainProfile";
 import {PublonsProfile} from "../components/researcher/PublonsProfile";
 import {GoogleScholarProfile} from "../components/researcher/GoogleScholarProfile";
 import {ScopusProfile} from "../components/researcher/ScopusProfile";
+import {useLoadProfile} from "../hooks/profile.hook";
 
 export const ResearcherProfilePage = () => {
 	const {id} = useParams()
+	const {loadProfile} = useLoadProfile()
+	useEffect(() => {
+		loadProfile(id)
+	}, [id, loadProfile])
 
 	return (
 		<div>

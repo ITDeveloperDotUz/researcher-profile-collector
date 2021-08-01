@@ -1,24 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {toast} from "react-toastify";
+import {useSearch} from "../hooks/search.hook";
 
 export const Search = ({searchCallback, value}) => {
-	const [searchForm, setSearchForm] = useState({phrase: '', eager: false});
+	const {searchForm, setSearchForm} = useSearch()
 
-	// check if initial values passed. If so, set these values to a searchform
 	useEffect(() => {
-		if(value && value.phrase) {
-			setSearchForm({phrase: value.phrase, eager:value.eager});
+		if(value && value.phrase){
+			setSearchForm(value)
 		}
-	}, [])
+	}, [setSearchForm, value])
 
 
-	const searchHandler = async () => {
-		if (!searchForm.phrase) {
+	const searchHandler = (value) => {
+		if (value && !value.phrase) {
 			toast.warning('Please enter an email, ORCID or a name of author to search')
 			return
 		}
-		searchCallback(searchForm)
+
+		searchCallback(value)
 	}
+
 
 
 	return (
@@ -31,7 +33,7 @@ export const Search = ({searchCallback, value}) => {
 					   className="animated w-full dark:bg-gray-800 dark:text-white px-4 py-3 text-base text-black focus:outline-none"
 					   placeholder="You can search by author name, email or ORCID..." type="text" value={searchForm.phrase}/>
 			</div>
-			<button onClick={searchHandler}
+			<button onClick={() => searchHandler(searchForm)}
 					className="flex items-center px-6 py-3 mt-auto font-semibold text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-lg  hover:bg-blue-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
 				Search
 			</button>
