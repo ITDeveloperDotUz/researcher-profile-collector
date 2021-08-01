@@ -29,21 +29,29 @@ myIterable[Symbol.iterator] = function* () {
 		yield Math.floor(Math.random() * 10000)
 	}
 };
-const VerticalBar = ({bgColor, label}) => {
+const VerticalBar = ({bgColor, label, years, citations, publications}) => {
 	const data = {
-		labels: ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021","2021","2021","2021","2021","2021","2021","2021","2021","2021"],
+		labels: years,
 		datasets: [
 			{
-				label: "Number of Moons",
+				label: "Publications",
 				type: 'bar',
-				data: [...myIterable],
+				data: citations,
 				backgroundColor: bgColor,
+			},
+			{
+				label: "Citations",
+				type: 'line',
+				data: publications,
+				backgroundColor: bgColor,
+				borderColor: bgColor,
+				borderWidth: 3
 			},
 		]
 	}
 	return (
 		<>
-			<Bar width={250} height={80} data={data} options={options} />
+			<Bar className="w-full" height={150} data={data} options={options} />
 			<h3 className="font-bold">{label}</h3>
 		</>
 	)

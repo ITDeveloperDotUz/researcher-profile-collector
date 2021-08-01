@@ -10,5 +10,6 @@ router.post('/login', AuthValidators.login, AuthController.login)
 
 // researcher routes
 router.get('/researcher/search/:searchParams', ResearcherController.search)
+router.get('/researcher/profile/:id', ResearcherController.getProfile)
 
 module.exports = router

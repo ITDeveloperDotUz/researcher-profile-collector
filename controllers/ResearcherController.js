@@ -3,9 +3,8 @@ const config = require('config')
 const Researcher = require('../models/Researcher')
 const swUrl = config.get('swUrl')
 
-
 module.exports = {
-	search: async (req, res) => {
+	async search(req, res){
 		try {
 			const eagerSearch = false
 			let data
@@ -82,11 +81,25 @@ module.exports = {
 			console.log(e)
 			res.status(500).json({message: 'Something went wrong. Please try again later'})
 		}
+	},
+	async getProfile(req, res){
+		try {
+
+			const researcher = await Researcher.findOne({id: req.params.id})
+			if (researcher){
+				res.json({message:'Found requested profile.', data: researcher})
+			} else {
+				res.status(404).json({message: 'No researcher found with this id.'})
+			}
+		} catch (e) {
+			console.log(e)
+			res.status(500).json({message: 'Something went wrong. Please try again later'})
+		}
 	}
 }
 
 function formatData(researcher){
-
+	const keywords = researcher.profile.keywords ? researcher.profile.keywords.split(',') : null
 
 	return {
 		country_code: researcher.country_code,
@@ -96,7 +109,7 @@ function formatData(researcher){
 		id: researcher.id,
 		avatar: `https://scienceweb.uz/${researcher.profile.avatar || 'images/icons/no_gender.png'}`,
 		bio: researcher.profile.bio,
-		keywords: researcher.profile.keywords,
+		keywords: keywords,
 		orcid: researcher.orcid,
 		public_name: researcher.profile.public_name,
 		organization: (researcher.profile.work_job && researcher.profile.work_org) ? `${researcher.profile.work_job} at ${researcher.profile.work_org}` : (researcher.profile.work_org || researcher.profile.work_job),
@@ -131,20 +144,21 @@ function makeGSProfile(data){
 
 // Reformat Publons profile data
 function makePublonsProfile(data) {
-	const inst = data.institutions ? JSON.parse(data.institutions) : ['']
+	const organizations = data.institutions ? JSON.parse(data.institutions) : ['']
 	const chartData = data.publication_stats ? JSON.parse(data.publication_stats) : {}
 	const keywords = data.researchFields ? JSON.parse(data.researchFields) : []
 
+	let organization = ''
 	// Recently data structure was changed by publons api so we should consider this change
 	// if "name" exists then this data is old version
-	let organization = inst[0].name
-	if (!organization) {
+	let institution = organizations[0]
+	if (institution && !institution.name) {
 		// Assign if both organization and role exist. Otherwise check for institution first and
 		// if it does not exist check for role if both does not exist '' will be assigned
-		organization = (inst.role && inst.institution)
-			? `${inst.role} at ${inst.institution}`
-			: inst.institution || inst.role
-	}
+		organization = (institution.role && institution.institution)
+			? `${institution.role} at ${institution.institution}`
+			: institution.institution || institution.role
+	} else organization = institution.name
 
 	return {
 		avatar: data.avatar,

@@ -8,7 +8,7 @@ const schema = new Schema({
 	last_name: {type: String, required: true},
 	avatar: {type: String},
 	bio: {type: String},
-	keywords: {type: String},
+	keywords: {type: Array},
 	orcid: {type: String},
 	public_name: {type: String},
 	organization: {type: String},
