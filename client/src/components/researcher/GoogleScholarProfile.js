@@ -13,7 +13,7 @@ export const GoogleScholarProfile = ({profile}) => {
 			<div className="py-2 px-5">
 				<h1 className="text-2xl text-white font-bold" >Google Scholar profile data</h1>
 			</div>
-			<div className="grid grid-cols-2 animated place-items-center bg-white dark:bg-gray-800 rounded-t-3xl rounded-b-lg">
+			<div className="grid lg:grid-cols-2 animated place-items-center bg-white dark:bg-gray-800 rounded-t-3xl rounded-b-lg">
 				<div className="place-self-start p-5">
 					<img className="w-20 h-20 rounded-full" src={profile.avatar} alt=""/>
 					<p><strong>User name:</strong> {profile.name}</p>

@@ -15,7 +15,7 @@ export const ScopusProfile = ({profile}) => {
 			<div className="py-2 px-5">
 				<h1 className="text-2xl text-white font-bold" >Scopus profile data</h1>
 			</div>
-			<div className="grid grid-cols-2 animated place-items-center bg-white dark:bg-gray-800 rounded-t-3xl rounded-b-lg">
+			<div className="grid lg:grid-cols-2 animated place-items-center bg-white dark:bg-gray-800 rounded-t-3xl rounded-b-lg">
 				<div className="place-self-start p-5">
 					<p><strong>User name:</strong> {profile.name}</p>
 					{organization}

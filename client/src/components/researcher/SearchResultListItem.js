@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 
-export const SearchResultListItem = ({researcher, avatar}) => {
+export const SearchResultListItem = ({researcher}) => {
 	return (
 		<div className="flex">
 			<div className="w-full grid place-items-center gap-3 grid-cols-2 lg:grid-cols-4 text-center animated bg-white dark:bg-gray-800 p-5 dark:text-white">

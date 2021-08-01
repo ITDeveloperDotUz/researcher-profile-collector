@@ -19,7 +19,7 @@ export const SearchPage = () => {
 	}, [searchHandler, searchPhrase, setSearchForm]);
 
 	const content = loading ? <Preloader /> : (
-		<div className="grid grid-cols-3 gap-5 animated">
+		<div className="grid lg:grid-cols-3 gap-5 animated">
 			{searchResult.map(researcher => <SearchResultListItem researcher={researcher} key={researcher.id} />)}
 		</div>
 	)
