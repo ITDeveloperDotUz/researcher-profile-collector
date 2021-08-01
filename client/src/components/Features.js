@@ -17,10 +17,9 @@ export const Features = () => {
 							fill="#4299E1"/>
 					</svg>
 
-					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Default Taiwindcss Config</h1>
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Did your profile appear?</h1>
 
-					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>
+					<p className="mt-2 text-gray-500 dark:text-gray-400">If not, register on scienceweb.uz and fill in your profile. Also link your social network profiles, Publons, Google Scholar and Scopus profiles and try to search  here again</p>
 				</div>
 
 				<div className="animated bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
@@ -36,11 +35,9 @@ export const Features = () => {
 							fill="#4299E1"/>
 					</svg>
 
-					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Fully Responsive
-						Components</h1>
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Did your publications appear?</h1>
 
-					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>
+					<p className="mt-2 text-gray-500 dark:text-gray-400">That is because this functionlaity was not added yet by our lazy developers. For now use scienceweb.uz to publish and list your publications.</p>
 				</div>
 
 				<div className="animated bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
@@ -69,10 +66,9 @@ export const Features = () => {
 						</defs>
 					</svg>
 
-					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">RTL Languages Support</h1>
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">How insolent we are...</h1>
 
-					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>
+					<p className="mt-2 text-gray-500 dark:text-gray-400">This is not a serious project supported by developers. This project is a test of new version of scienceweb.uz and all the little functionality soon will appear on scienceweb</p>
 				</div>
 			</div>
 		</div>

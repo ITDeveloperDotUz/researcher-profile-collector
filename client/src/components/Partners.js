@@ -15,7 +15,7 @@ export const Partners = () => {
 			<div className="container px-5 mx-auto lg:py-20">
 				<div className="flex flex-col w-full mb-12 text-center">
 					<h2 className="animated dark:text-white mb-4 text-xs font-semibold tracking-widest text-black uppercase title-font"> The
-						world's best teams use Wickedtemplates to state theire presence.
+						All the data collected from these databases is public!!!
 					</h2>
 				</div>
 				<div className="grid grid-cols-3 gap-4 text-center lg:grid-cols-5">

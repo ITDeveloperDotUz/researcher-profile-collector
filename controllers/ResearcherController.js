@@ -6,9 +6,11 @@ const swUrl = config.get('swUrl')
 module.exports = {
 	async search(req, res){
 		try {
-			const eagerSearch = false
 			let data
-			if (eagerSearch){
+
+			const searchParams = req.params.searchParams.split(':')
+
+			if (searchParams[2] && searchParams[2] === 'true'){
 				const response = await axios.get(swUrl + '/search/' + req.params.searchParams, {
 					headers: {
 						accept: 'application/json',
@@ -17,59 +19,51 @@ module.exports = {
 				})
 				const responseData = response.data.filter(researcher => !!researcher.profile.filled)
 
-				// we need to normalize th data received from scienceweb
-				data = responseData.map((researcher) => {
+				// we need to normalize the data received from scienceweb
+				const promises = responseData.map(async (researcher) => {
 					const formattedData = formatData(researcher)
+
 					try {
-						Researcher.updateOne({id: formattedData.id}, formattedData, { upsert: true })
+						await Researcher.updateOne({id: formattedData.id}, formattedData, { upsert: true })
 					} catch (e){
 						console.log(e.message)
 					}
 					return formattedData
 				})
+				data = await Promise.all(promises)
+
 			} else {
-				const searchParams = req.params.searchParams.split(':')
-
-				switch(searchParams[0] ) {
-					case 'name':
-
-						data = await Researcher.find({
-							"$expr": {
-								$or: [
-									{
-										"$regexMatch": {
-											"input": {
-												"$concat": [
-													"$first_name", " ", "$last_name"
-												]
-											},
-											"regex": searchParams[1],
-											"options": "i"
-										}
-									},
-									{
-										"$regexMatch": {
-											"input": {
-												"$concat": [
-													"$last_name", " ", "$first_name"
-												]
-											},
-											"regex": searchParams[1],
-											"options": "i"
-										}
+				if (searchParams[0] === 'name') {
+					data = await Researcher.find({
+						"$expr": {
+							$or: [
+								{
+									"$regexMatch": {
+										"input": {
+											"$concat": [
+												"$first_name", " ", "$last_name"
+											]
+										},
+										"regex": searchParams[1],
+										"options": "i"
 									}
-								]
-							}
-						})
-						break
-					case 'email':
-						data = await Researcher.find({email:searchParams[1] })
-						break
-					case 'orcid':
-						data = await Researcher.find({orcid:searchParams[1]})
-						break
-					default:
-						data = []
+								},
+								{
+									"$regexMatch": {
+										"input": {
+											"$concat": [
+												"$last_name", " ", "$first_name"
+											]
+										},
+										"regex": searchParams[1],
+										"options": "i"
+									}
+								}
+							]
+						}
+					})
+				} else {
+					data = await Researcher.find({[searchParams[0]]:searchParams[1]})
 				}
 			}
 			// if data is not empty return it to user

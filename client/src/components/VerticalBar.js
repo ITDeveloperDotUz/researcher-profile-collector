@@ -34,13 +34,13 @@ const VerticalBar = ({bgColor, label, years, citations, publications}) => {
 		labels: years,
 		datasets: [
 			{
-				label: "Publications",
+				label: "Citations",
 				type: 'bar',
 				data: citations,
 				backgroundColor: bgColor,
 			},
 			{
-				label: "Citations",
+				label: "Publications",
 				type: 'line',
 				data: publications,
 				backgroundColor: bgColor,

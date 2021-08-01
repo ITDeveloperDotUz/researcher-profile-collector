@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export const SearchResultListItem = ({researcher, avatar}) => {
 	return (
-		<div className="flex my-4">
+		<div className="flex">
 			<div className="w-full grid place-items-center gap-3 grid-cols-2 lg:grid-cols-4 text-center animated bg-white dark:bg-gray-800 p-5 dark:text-white">
 				<div className="col-span-2 lg:col-span-1">
 					<img className="rounded-full overflow-hidden" width="80" style={{maxHeight: 80}} src={researcher.avatar} alt="" />

@@ -21,7 +21,7 @@ export const ResearcherProfilePage = () => {
 	return (
 		<div>
 			<div className="grid gap-4 p-5 lg:grid-cols-4 items-start">
-				<div className="animated rounded-lg shadow-md hover:shadow-lg bg-gray-200 dark:bg-gray-700">
+				<div style={{background: "rgb(44 114 79)"}}  className="animated rounded-lg shadow-md hover:shadow-lg bg-gray-200 dark:bg-gray-700">
 					<MainProfile profile={profileData} />
 				</div>
 				<div className="lg:col-span-3 grid gap-5">
