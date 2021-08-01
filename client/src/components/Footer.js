@@ -5,7 +5,7 @@ export const Footer = () => {
 	return (
 		<footer className="">
 			<div className="container px-6 py-8 mx-auto">
-				<hr className="my-10 dark:border-gray-500" />
+				<hr className="my-10 border-gray-500" />
 				<div className="sm:flex sm:items-center sm:justify-between">
 					<p className="text-sm text-gray-400">© Copyright 2021. Created by Abror Aliboyev</p>
 					<div className="flex mt-3 -mx-2 sm:mt-0">

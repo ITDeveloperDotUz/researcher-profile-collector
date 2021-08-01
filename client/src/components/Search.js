@@ -22,15 +22,13 @@ export const Search = ({searchCallback, value}) => {
 
 
 	return (
-		<div className="flex w-full gap-2 md:justify-start md:flex-row bg-white
-			shadow-md hover:shadow-lg dark:bg-gray-800 dark:text-white px-4 py-3 mb-4 text-base text-black transition ease-in-out transform rounded-lg duration-650
-		">
+		<div className="animated flex w-full gap-2 md:justify-start md:flex-row bg-white shadow-md hover:shadow-lg dark:bg-gray-800 dark:text-white px-4 py-3 mb-4 text-base text-black transition ease-in-out transform rounded-lg duration-650">
 			<label className="inline-flex items-center">
 				<input title="Search from Scienceweb database..." onChange={e => setSearchForm({...searchForm, eager: e.target.checked})} name="eager" type="checkbox" checked={searchForm.eager} className="form-checkbox h-5 w-5 text-blue-600" />
 			</label>
 			<div className="w-full">
 				<input name="phrase" onChange={e => setSearchForm({...searchForm, phrase: e.target.value})}
-					   className="w-full dark:bg-gray-800 dark:text-white px-4 py-3 text-base text-black focus:outline-none"
+					   className="animated w-full dark:bg-gray-800 dark:text-white px-4 py-3 text-base text-black focus:outline-none"
 					   placeholder="You can search by author name, email or ORCID..." type="text" value={searchForm.phrase}/>
 			</div>
 			<button onClick={searchHandler}

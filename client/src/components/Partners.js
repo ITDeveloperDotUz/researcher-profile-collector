@@ -14,7 +14,7 @@ export const Partners = () => {
 		<section className="mx-auto">
 			<div className="container px-5 mx-auto lg:py-20">
 				<div className="flex flex-col w-full mb-12 text-center">
-					<h2 className="dark:text-white mb-4 text-xs font-semibold tracking-widest text-black uppercase title-font"> The
+					<h2 className="animated dark:text-white mb-4 text-xs font-semibold tracking-widest text-black uppercase title-font"> The
 						world's best teams use Wickedtemplates to state theire presence.
 					</h2>
 				</div>

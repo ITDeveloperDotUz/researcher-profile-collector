@@ -17,8 +17,8 @@ export const Banner = () => {
 		<section>
 			<div className="container flex flex-col items-center px-5 py-16 mx-auto md:flex-row lg:px-28">
 				<div
-					className="flex flex-col items-start w-full pt-0 mb-16 text-left  lg:flex-grow md:w-1/2 xl:mr-20 md:pr-24 md:mb-0">
-					<h1 className="mb-8 text-2xl font-black tracking-tighter text-black dark:text-white md:text-5xl title-font"> Medium
+					className="flex flex-col items-start w-full pt-0 mb-16 text-left lg:flex-grow md:w-1/2 xl:mr-20 md:pr-24 md:mb-0 animated">
+					<h1 className="mb-8 text-2xl font-black tracking-tighter text-black dark:text-white md:text-5xl title-font animated"> Medium
 						length display headline. </h1>
 					<p className="mb-8 text-base leading-relaxed text-left"> Deploy your mvp in
 						minutes, not days. WT offers you a a wide selection swapable sections for your landing

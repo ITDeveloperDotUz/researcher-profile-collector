@@ -4,7 +4,7 @@ export const Features = () => {
 	return (
 		<div className="mb-6 mx-auto">
 			<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				<div className="bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
+				<div className="animated bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
 					<svg className="w-8 h-8" viewBox="0 0 30 30" fill="none">
 						<path
 							d="M29.6931 14.2283L22.7556 6.87823C22.3292 6.426 21.6175 6.40538 21.1652 6.83212C20.7137 7.25851 20.6927 7.9706 21.1195 8.42248L27.3284 15L21.1195 21.5783C20.6927 22.0302 20.7137 22.7419 21.1652 23.1687C21.3827 23.3738 21.6606 23.4754 21.9374 23.4754C22.2363 23.4754 22.5348 23.3569 22.7557 23.1233L29.6932 15.7729C30.1022 15.339 30.1023 14.6618 29.6931 14.2283Z"
@@ -17,13 +17,13 @@ export const Features = () => {
 							fill="#4299E1"/>
 					</svg>
 
-					<h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Default Taiwindcss Config</h1>
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Default Taiwindcss Config</h1>
 
 					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
 						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>
 				</div>
 
-				<div className="bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
+				<div className="animated bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
 					<svg className="w-8 h-8" viewBox="0 0 30 30" fill="none">
 						<path
 							d="M27.3633 7.08984H26.4844V6.21094C26.4844 4.75705 25.3015 3.57422 23.8477 3.57422H4.39453C2.94064 3.57422 1.75781 4.75705 1.75781 6.21094V21.1523H0.878906C0.393516 21.1523 0 21.5459 0 22.0312V23.7891C0 25.2429 1.18283 26.4258 2.63672 26.4258H27.3633C28.8172 26.4258 30 25.2429 30 23.7891V9.72656C30 8.27268 28.8172 7.08984 27.3633 7.08984ZM3.51562 6.21094C3.51562 5.72631 3.9099 5.33203 4.39453 5.33203H23.8477C24.3323 5.33203 24.7266 5.72631 24.7266 6.21094V7.08984H20.332C18.8781 7.08984 17.6953 8.27268 17.6953 9.72656V21.1523H3.51562V6.21094ZM1.75781 23.7891V22.9102H17.6953V23.7891C17.6953 24.0971 17.7489 24.3929 17.8465 24.668H2.63672C2.15209 24.668 1.75781 24.2737 1.75781 23.7891ZM28.2422 23.7891C28.2422 24.2737 27.8479 24.668 27.3633 24.668H20.332C19.8474 24.668 19.4531 24.2737 19.4531 23.7891V9.72656C19.4531 9.24193 19.8474 8.84766 20.332 8.84766H27.3633C27.8479 8.84766 28.2422 9.24193 28.2422 9.72656V23.7891Z"
@@ -36,14 +36,14 @@ export const Features = () => {
 							fill="#4299E1"/>
 					</svg>
 
-					<h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Fully Responsive
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">Fully Responsive
 						Components</h1>
 
 					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
 						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>
 				</div>
 
-				<div className="bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
+				<div className="animated bg-white dark:bg-gray-800 px-6 py-8 rounded-lg">
 					<svg className="w-8 h-8" viewBox="0 0 30 30" fill="none">
 						<g clipPath="url(#clip0)">
 							<path
@@ -69,7 +69,7 @@ export const Features = () => {
 						</defs>
 					</svg>
 
-					<h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">RTL Languages Support</h1>
+					<h1 className="animated mt-4 text-xl font-semibold text-gray-800 dark:text-white">RTL Languages Support</h1>
 
 					<p className="mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing
 						elit. Dignissim fusce tortor, ac sed malesuada blandit. Et mi gravida sem feugiat.</p>

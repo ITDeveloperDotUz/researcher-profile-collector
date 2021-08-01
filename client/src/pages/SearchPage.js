@@ -10,7 +10,7 @@ export const SearchPage = () => {
 	const {searchPhrase} = useParams()
 	const [searchResult, setSearchResult] = useState([])
 	const {request} = useHttp()
-	const search = searchPhrase.split(':')
+	const search = searchPhrase ? searchPhrase.split(':') : ''
 	let searchForm = {phrase: search[0], eager:search[1] !== "false"}
 
 	const searchHandler = useCallback( async (searchForm) => {
@@ -29,13 +29,15 @@ export const SearchPage = () => {
 	}, [request,setSearchResult])
 
 	useEffect(() => {
-		searchHandler((searchForm))
+		if (searchForm.phrase){
+			searchHandler((searchForm))
+		}
 	}, []);
 
 
 	return (
 		<div className="text-center pt-6">
-			<div className="lg:px-20 py-10">
+			<div className="lg:px-20 py-10 animated">
 				<h1 className="text-5xl font-semibold">Search authors</h1>
 				<p className="text-lg mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi corporis ducimus et eveniet fuga illum incidunt, ipsa iusto labore laudantium maxime nesciunt nobis odio officia quam, reprehenderit sequi sunt!</p>
 				<div className="lg:px-20">

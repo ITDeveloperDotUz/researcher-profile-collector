@@ -16,13 +16,12 @@ export const MainProfile = () => {
 				</div>
 			</div>
 
-			<div className="text-center pt-16 px-5 pb-5">
-				<h2 className="text-xl font-bold">Hello Abror</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto  voluptatem. Aut, facilis?</p>
-				<p className="italic mt-5">
+			<div className="animated text-center pt-16 px-5 pb-5">
+				<h2 className="animated text-black dark:text-white text-xl font-bold">Hello Abror</h2>
+				<p className="animated text-black dark:text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto  voluptatem. Aut, facilis?</p>
+				<p className="animated italic mt-5 text-black dark:text-white">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, culpa dolores doloribus ea ipsa laboriosam maiores minus molestias pariatur, rem similique tempore, voluptates. Amet consequatur fuga, illo minima quam quas.
 				</p>
-
 			</div>
 
 			<div className="flex p-5 justify-center text-xl">
