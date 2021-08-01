@@ -89,6 +89,22 @@ module.exports = {
 			console.log(e)
 			res.status(500).json({message: 'Something went wrong. Please try again later'})
 		}
+	},
+	async getTopProfiles(req, res){
+		try {
+			let limit = 10
+			if(req.params.limit) limit = +req.params.limit
+			const researcher = await Researcher.aggregate([{$sort: {'scopuesProfile.citations': -1}},  { $limit : limit }])
+
+			if (researcher){
+				res.json({message:'Found requested profiles.', data: researcher})
+			} else {
+				res.status(404).json({message: 'No researcher found with this id.'})
+			}
+		} catch (e) {
+			console.log(e)
+			res.status(500).json({message: 'Something went wrong. Please try again later'})
+		}
 	}
 }
 
